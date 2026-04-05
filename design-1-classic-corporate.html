@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="page_title">NFG Advisory Sdn Bhd – Partner Program</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0D1F3C;
+    --navy-mid: #162845;
+    --navy-light: #1E3A5F;
+    --slate: #4A5568;
+    --charcoal: #2D3748;
+    --gold: #C9A84C;
+    --gold-light: #E4C46B;
+    --gold-dark: #A8883A;
+    --white: #FFFFFF;
+    --off-white: #F7F6F2;
+    --border: #D1C5A5;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--charcoal);
+    background: var(--off-white);
+    line-height: 1.6;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.92); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  @keyframes pulseGlow {
+    0%, 100% { box-shadow: 0 4px 18px rgba(37,211,102,0.35); }
+    50% { box-shadow: 0 4px 28px rgba(37,211,102,0.55); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+  .anim-fade-up { opacity: 0; animation: fadeInUp 0.7s ease forwards; }
+  .anim-fade-in { opacity: 0; animation: fadeIn 0.6s ease forwards; }
+  .anim-slide-left { opacity: 0; animation: slideInLeft 0.7s ease forwards; }
+  .anim-slide-right { opacity: 0; animation: slideInRight 0.7s ease forwards; }
+  .anim-scale { opacity: 0; animation: scaleIn 0.6s ease forwards; }
+  .anim-d1 { animation-delay: 0.1s; }
+  .anim-d2 { animation-delay: 0.25s; }
+  .anim-d3 { animation-delay: 0.4s; }
+  .anim-d4 { animation-delay: 0.55s; }
+
+  /* ── LANGUAGE SWITCHER ── */
+  .lang-bar {
+    position: fixed;
+    top: 0; right: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--navy);
+    border-bottom-left-radius: 10px;
+    padding: 8px 16px;
+    box-shadow: -2px 2px 16px rgba(0,0,0,0.25);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-top: none; border-right: none;
+  }
+  .lang-bar-label {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-right: 4px;
+  }
+  .lang-btn {
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.35);
+    color: rgba(255,255,255,0.65);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    padding: 4px 11px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .lang-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .lang-btn.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--navy);
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--navy);
+    color: rgba(255,255,255,0.65);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-align: center;
+    padding: 8px 20px;
+  }
+  .topbar span { color: var(--gold); font-weight: 600; }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--white);
+    border-bottom: 3px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 60px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .nav-logo .monogram {
+    width: 48px; height: 48px;
+    background: var(--navy);
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    font-weight: 700;
+  }
+  .nav-logo .brand { display: flex; flex-direction: column; }
+  .nav-logo .brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+  }
+  .nav-logo .brand-sub {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+    color: var(--gold-dark);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  nav ul { list-style: none; display: flex; gap: 32px; align-items: center; }
+  nav ul li a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  nav ul li a:hover { color: var(--gold-dark); }
+  .nav-cta {
+    background: var(--navy);
+    color: var(--gold) !important;
+    padding: 10px 22px;
+    border-radius: 3px;
+    border: 1px solid var(--gold-dark);
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--navy-light) !important; color: var(--gold-light) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 60%, #1a2f52 100%);
+    padding: 100px 60px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,0.03) 40px, rgba(201,168,76,0.03) 80px);
+  }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 6px 20px;
+    border-radius: 2px;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    color: var(--white);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .hero h1 em { font-style: normal; color: var(--gold-light); }
+  .hero p {
+    color: rgba(255,255,255,0.72);
+    font-size: 1.05rem;
+    max-width: 580px;
+    margin: 0 auto 40px;
+    font-weight: 300;
+  }
+  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    padding: 14px 36px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-secondary {
+    border: 1px solid rgba(255,255,255,0.4);
+    color: var(--white);
+    padding: 14px 36px;
+    border-radius: 3px;
+    font-size: 0.9rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: border-color 0.2s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* ── STATS STRIP ── */
+  .stats-strip {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .stat-item {
+    padding: 28px 48px;
+    text-align: center;
+    border-right: 1px solid var(--border);
+    flex: 1;
+    min-width: 180px;
+    transition: background 0.3s;
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-item:hover { background: rgba(201,168,76,0.04); }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navy);
+  }
+  .stat-number span { color: var(--gold-dark); }
+  .stat-label { font-size: 0.78rem; color: var(--slate); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 4px; }
+
+  /* ── SECTION COMMON ── */
+  .section { padding: 80px 60px; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.8rem);
+    color: var(--navy);
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .section-line {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--gold), var(--gold-light));
+    margin: 18px auto 0;
+    border-radius: 2px;
+  }
+  .section-subtitle {
+    color: var(--slate);
+    font-size: 1rem;
+    max-width: 520px;
+    margin: 16px auto 0;
+    font-weight: 300;
+  }
+
+  /* ── PROGRAMS TABS ── */
+  .programs-container { max-width: 1100px; margin: 0 auto; }
+  .tab-nav {
+    display: flex;
+    border-bottom: 2px solid var(--border);
+    margin-bottom: 48px;
+    gap: 4px;
+  }
+  .tab-btn {
+    padding: 14px 28px;
+    cursor: pointer;
+    border: none;
+    background: none;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--slate);
+    position: relative;
+    transition: color 0.2s;
+    letter-spacing: 0.02em;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+  }
+  .tab-btn.active { color: var(--navy); border-bottom-color: var(--gold); }
+  .tab-btn:hover { color: var(--navy); }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; animation: fadeIn 0.4s ease; }
+
+  /* ── PART CARDS (redesigned wider) ── */
+  .parts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    margin-bottom: 36px;
+  }
+  .part-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .part-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 36px rgba(0,0,0,0.10);
+  }
+  .part-card-header {
+    background: var(--navy);
+    padding: 24px 36px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+  .part-badge {
+    width: 44px; height: 44px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--navy);
+    font-family: 'Playfair Display', serif;
+    flex-shrink: 0;
+  }
+  .part-card-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .part-card-header p { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 3px; }
+  .part-card-body { padding: 32px 36px; }
+
+  .level-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid #eeecdf;
+  }
+  .level-row:last-child { border-bottom: none; }
+  .level-label { display: flex; align-items: center; gap: 12px; }
+  .level-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+  }
+  .level-text { font-size: 0.9rem; color: var(--slate); }
+  .level-text strong { color: var(--charcoal); font-weight: 600; }
+  .level-value {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--navy);
+    font-family: 'Playfair Display', serif;
+    text-align: right;
+  }
+  .level-value small {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.72rem;
+    color: var(--gold-dark);
+    font-weight: 600;
+    display: block;
+  }
+
+  .note-box {
+    background: #FFF9ED;
+    border-left: 4px solid var(--gold);
+    border-radius: 0 6px 6px 0;
+    padding: 16px 22px;
+    font-size: 0.84rem;
+    color: var(--charcoal);
+    margin-top: 20px;
+    line-height: 1.7;
+  }
+  .note-box strong { color: var(--gold-dark); }
+
+  .sample-box {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 28px 36px;
+    margin-top: 28px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .sample-icon { font-size: 2.5rem; }
+  .sample-text { flex: 1; min-width: 200px; }
+  .sample-text h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .sample-text p { color: rgba(255,255,255,0.75); font-size: 0.88rem; line-height: 1.8; }
+  .sample-result {
+    text-align: center;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid var(--gold-dark);
+    border-radius: 6px;
+    padding: 18px 28px;
+  }
+  .sample-result .amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+  .sample-result .label { font-size: 0.72rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.1em; }
+
+  /* Override diagram */
+  .override-diagram {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin: 28px 0;
+    flex-wrap: wrap;
+  }
+  .agent-node {
+    text-align: center;
+    padding: 22px 28px;
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    min-width: 140px;
+    transition: transform 0.2s;
+  }
+  .agent-node:hover { transform: translateY(-2px); }
+  .agent-node .agent-letter {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin: 0 auto 10px;
+  }
+  .agent-a .agent-letter { background: var(--navy); color: var(--gold); }
+  .agent-b .agent-letter { background: var(--gold); color: var(--navy); }
+  .agent-c .agent-letter { background: var(--charcoal); color: var(--gold-light); }
+  .agent-node .agent-name { font-size: 0.82rem; font-weight: 600; color: var(--charcoal); }
+  .agent-node .agent-role { font-size: 0.72rem; color: var(--slate); margin-top: 3px; }
+  .agent-node .agent-pct {
+    font-size: 1.4rem; font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    color: var(--gold-dark);
+    margin-top: 8px;
+  }
+  .arrow-line {
+    flex: 0 0 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--border), var(--gold-dark));
+    position: relative;
+    margin: 0 4px;
+    align-self: center;
+  }
+  .arrow-line::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: -12px;
+    color: var(--gold-dark);
+    font-size: 1rem;
+  }
+
+  /* Payout table */
+  .payout-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 20px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .payout-table thead tr {
+    background: var(--navy);
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .payout-table thead th { padding: 14px 20px; text-align: left; font-weight: 600; }
+  .payout-table tbody tr { background: var(--white); border-bottom: 1px solid var(--border); transition: background 0.15s; }
+  .payout-table tbody tr:hover { background: #FFF9ED; }
+  .payout-table tbody tr.highlight-row { background: rgba(201,168,76,0.08); }
+  .payout-table tbody td { padding: 12px 20px; color: var(--charcoal); }
+  .payout-table tbody td:first-child { color: var(--navy); font-weight: 600; }
+  .payout-table .incr-cell { color: var(--gold-dark); font-weight: 600; }
+  .payout-table .total-cell { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--navy); font-weight: 700; }
+  .payout-table tbody tr.milestone-row td { background: rgba(13,31,60,0.06); }
+
+  /* ── PROGRAM 2 ── */
+  .p2-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+    margin-bottom: 28px;
+  }
+  .p2-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .p2-card:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(0,0,0,0.08); }
+  .p2-card-head {
+    padding: 20px 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .scenario-icon {
+    width: 40px; height: 40px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .scenario-direct .scenario-icon { background: #EDF5E8; }
+  .scenario-referred .scenario-icon { background: #EEF2FF; }
+  .p2-card-head h3 { font-size: 1rem; font-weight: 600; color: var(--navy); }
+  .p2-card-head p { font-size: 0.78rem; color: var(--slate); margin-top: 3px; }
+  .p2-card-body { padding: 24px 28px; }
+
+  .split-visual {
+    display: flex;
+    height: 52px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    font-size: 0.84rem;
+    font-weight: 700;
+  }
+  .split-part {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    letter-spacing: 0.05em;
+  }
+  .split-half-a { width: 50%; background: var(--navy); }
+  .split-half-b { width: 50%; background: var(--gold-dark); }
+
+  .distribute-list { list-style: none; margin-top: 14px; }
+  .distribute-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 0.88rem;
+  }
+  .distribute-list li:last-child { border: none; }
+  .distribute-list .who { display: flex; align-items: center; gap: 8px; color: var(--charcoal); }
+  .distribute-list .who-dot { width: 10px; height: 10px; border-radius: 3px; }
+  .distribute-list .pct { font-weight: 700; color: var(--navy); font-family: 'Playfair Display', serif; font-size: 1rem; }
+
+  .p2-requirement {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .req-icon { font-size: 2rem; }
+  .req-text h4 {
+    font-family: 'Playfair Display', serif;
+    color: var(--gold);
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .req-text p { color: rgba(255,255,255,0.7); font-size: 0.88rem; }
+  .req-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+    margin-left: auto;
+  }
+  .req-number small { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.5); display: block; text-align: center; }
+
+  /* ── WHATSAPP SECTION (Style 2 only) ── */
+  .wa-section { padding: 80px 60px; background: var(--white); }
+  .wa-v2-inner { max-width: 920px; margin: 0 auto; display: flex; align-items: center; gap: 64px; flex-wrap: wrap; }
+  .wa-v2-text { flex: 1; min-width: 280px; }
+  .wa-v2-text h3 { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: var(--navy); margin-bottom: 12px; }
+  .wa-v2-text p { color: var(--slate); font-size: 0.92rem; line-height: 1.8; margin-bottom: 28px; }
+  .wa-v2-graphic { flex: 0 0 220px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .wa-v2-bubble {
+    background: var(--navy); color: var(--white); border-radius: 18px 18px 18px 4px;
+    padding: 14px 20px; font-size: 0.85rem; line-height: 1.5; max-width: 210px;
+    animation: slideInLeft 0.6s ease forwards;
+    opacity: 0;
+  }
+  .wa-v2-bubble.reply {
+    background: #E8F5E9; color: var(--charcoal); border-radius: 18px 18px 4px 18px;
+    align-self: flex-end;
+    animation: slideInRight 0.6s 0.4s ease forwards;
+    opacity: 0;
+  }
+  .wa-v2-time { font-size: 0.68rem; color: var(--slate); align-self: flex-end; }
+  .btn-wa {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: #25D366; color: #fff;
+    padding: 14px 32px; border-radius: 50px;
+    font-weight: 700; font-size: 0.9rem; letter-spacing: 0.04em;
+    text-decoration: none; transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 18px rgba(37,211,102,0.35);
+    animation: pulseGlow 2.5s infinite ease-in-out;
+  }
+  .btn-wa:hover { background: #1ebe5a; transform: translateY(-2px); box-shadow: 0 6px 24px rgba(37,211,102,0.45); }
+  .btn-wa svg { width: 20px; height: 20px; fill: currentColor; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0a1626;
+    padding: 40px 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+  }
+  .footer-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .footer-brand .brand-sub { display: block; font-family: 'Inter', sans-serif; font-size: 0.72rem; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; text-transform: uppercase; margin-top: 2px; font-weight: 400; }
+  .footer-legal { font-size: 0.75rem; color: rgba(255,255,255,0.35); text-align: center; flex: 1; }
+  .footer-contact { font-size: 0.82rem; color: rgba(255,255,255,0.5); text-align: right; }
+  .footer-contact a { color: var(--gold-dark); text-decoration: none; }
+
+  /* ── SCROLL ANIMATION ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:768px){
+    nav { padding: 14px 24px; }
+    nav ul { display: none; }
+    .hero { padding: 70px 24px 60px; }
+    .section { padding: 60px 24px; }
+    .wa-section { padding: 60px 24px; }
+    .parts-grid { grid-template-columns: 1fr; }
+    .p2-grid { grid-template-columns: 1fr; }
+    .sample-box { flex-direction: column; text-align: center; }
+    .wa-v2-inner { flex-direction: column; gap: 36px; }
+    .wa-v2-graphic { flex: none; width: 100%; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-contact { text-align: center; }
+    .part-card-body { padding: 24px 20px; }
+    .part-card-header { padding: 20px; }
+    .override-diagram { gap: 8px; }
+    .agent-node { min-width: 100px; padding: 14px 12px; }
+    .arrow-line { flex: 0 0 30px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LANGUAGE SWITCHER -->
+<div class="lang-bar" id="lang-bar">
+  <span class="lang-bar-label" data-i18n="lang_label">Language</span>
+  <button class="lang-btn active" onclick="setLang('en')" id="lang-en">EN</button>
+  <button class="lang-btn" onclick="setLang('bm')" id="lang-bm">BM</button>
+  <button class="lang-btn" onclick="setLang('zh')" id="lang-zh">中文</button>
+</div>
+
+<div class="topbar" data-i18n="topbar">
+  Partnering with excellence since 2020 · Malaysia's Premier Mortgage Consulting Firm ·
+  <span>NFG Advisory Sdn Bhd</span>
+</div>
+
+<nav>
+  <div class="nav-logo">
+    <img src="nfglogo.png" alt="NFG Advisory Sdn Bhd" style="width:80px;height:80px;border-radius:6px;object-fit:contain;display:block;">
+    <div class="brand">
+      <div class="brand-name" data-i18n="brand_name">NFG Advisory Sdn Bhd</div>
+      <div class="brand-sub" data-i18n="brand_sub">Partner Program · Malaysia</div>
+    </div>
+  </img>
+  <ul>
+    <li><a href="#programs" data-i18n="nav_programs">Programs</a></li>
+    <li><a href="#how" data-i18n="nav_how">Contact Us</a></li>
+    <li><a href="#join" class="nav-cta" data-i18n="nav_join">Join Now</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge anim-fade-in anim-d1" data-i18n="hero_badge">Exclusive Partner Program 2025</div>
+  <h1 class="anim-fade-up anim-d2" data-i18n="hero_h1">Build <em>Wealth</em> Beyond<br>Every Property Deal</h1>
+  <p class="anim-fade-up anim-d3" data-i18n="hero_p">Elite property agents in Malaysia choose NFG to unlock multiple income streams — commissions, cash bonuses, and passive overrides.</p>
+  <div class="hero-btns anim-fade-up anim-d4">
+    <a href="#programs" class="btn-primary" data-i18n="hero_btn1">Explore Programs</a>
+    <a href="#how" class="btn-secondary" data-i18n="hero_btn2">Contact Us via WhatsApp</a>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stat-item reveal">
+    <div class="stat-number" data-i18n="stat1_number">0.30<span>%</span></div>
+    <div class="stat-label" data-i18n="stat1_label">Peak Commission Rate</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number" data-i18n="stat2_number">RM <span>2,400</span></div>
+    <div class="stat-label" data-i18n="stat2_label">Sample Closing (RM 800K Loan)</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number" data-i18n="stat3_number">RM <span>2,500</span></div>
+    <div class="stat-label" data-i18n="stat3_label">Max Recruitment Bonus</div>
+  </div>
+  <div class="stat-item reveal">
+    <div class="stat-number" data-i18n="stat4_number">20<span>%</span></div>
+    <div class="stat-label" data-i18n="stat4_label">Legal Fee Share (Team Track)</div>
+  </div>
+</div>
+
+<!-- PROGRAMS -->
+<section class="section" id="programs" style="background:var(--off-white);">
+  <div class="section-header reveal">
+    <div class="section-tag" data-i18n="programs_tag">Partner Program Structure</div>
+    <h2 class="section-title" data-i18n="programs_title">Two Paths to Elite Income</h2>
+    <div class="section-line"></div>
+    <p class="section-subtitle" data-i18n="programs_sub">Choose the track that aligns with your business model — or qualify for both simultaneously.</p>
+  </div>
+
+  <div class="programs-container">
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(event,'p1')" data-i18n="tab1">Program 1 · Elite Individual Track</button>
+      <button class="tab-btn" onclick="switchTab(event,'p2')" data-i18n="tab2">Program 2 · Team Partnership Track</button>
+    </div>
+
+    <!-- ── PROGRAM 1 ── -->
+    <div class="tab-content active" id="p1">
+      <div class="parts-grid">
+
+        <!-- Part A -->
+        <div class="part-card reveal">
+          <div class="part-card-header">
+            <div class="part-badge">A</div>
+            <div>
+              <h3 data-i18n="p1a_title">Recruitment Growth Bonuses</h3>
+              <p data-i18n="p1a_desc">One-time cash rewards for expanding your agent network</p>
+            </div>
+          </div>
+          <div class="part-card-body">
+            <div class="level-row">
+              <div class="level-label"><div class="level-dot"></div><div class="level-text"><strong data-i18n="lvl_2">Level 2</strong> <span data-i18n="p1a_l2">— Refer 5 Active Agents</span></div></div>
+              <div class="level-value"><span data-i18n="p1a_l2_val">RM 500</span><small data-i18n="one_time">One-Time</small></div>
+            </div>
+            <div class="level-row">
+              <div class="level-label"><div class="level-dot"></div><div class="level-text"><strong data-i18n="lvl_3">Level 3</strong> <span data-i18n="p1a_l3">— Refer 10 Active Agents</span></div></div>
+              <div class="level-value"><span data-i18n="p1a_l3_val">RM 1,000</span><small data-i18n="one_time">One-Time</small></div>
+            </div>
+            <div class="level-row">
+              <div class="level-label"><div class="level-dot"></div><div class="level-text"><strong data-i18n="lvl_4">Level 4</strong> <span data-i18n="p1a_l4">— Refer 15 Active Agents</span></div></div>
+              <div class="level-value"><span data-i18n="p1a_l4_val">RM 1,000</span><small data-i18n="one_time">One-Time</small></div>
+            </div>
+            <div class="note-box" data-i18n="p1a_note">
+              <strong>Active Agent Definition:</strong> A referred agent qualifies as "active" only after at least <strong>1 case has been approved and signed</strong>.
+            </div>
+          </div>
+        </div>
+
+        <!-- Part B -->
+        <div class="part-card reveal">
+          <div class="part-card-header">
+            <div class="part-badge">B</div>
+            <div>
+              <h3 data-i18n="p1b_title">Personal Sales Commission</h3>
+              <p data-i18n="p1b_desc">Earn on every case you close — based on our tiered rate structure</p>
+            </div>
+          </div>
+          <div class="part-card-body">
+            <div class="note-box" style="margin-bottom:20px;margin-top:0;" data-i18n="p1b_eligibility">
+              <strong>Eligibility Requirement:</strong> This referral fee is provided exclusively when NFG's panel lawyer is engaged as the <strong>SPA Lawyer</strong>, <strong>Loan Agreement Lawyer</strong>, or <strong>both</strong>. Cases handled by external lawyers do not qualify.
+            </div>
+            <div class="level-row">
+              <div class="level-label"><div class="level-dot"></div><div class="level-text"><strong data-i18n="lvl_1">Level 1</strong> <span data-i18n="p1b_l1">— Entry Tier</span></div></div>
+              <div class="level-value"><span data-i18n="p1b_l1_rate">0.15%</span><small data-i18n="of_spa">of SPA / Loan Amount</small></div>
+            </div>
+            <div class="level-row">
+              <div class="level-label"><div class="level-dot"></div><div class="level-text"><strong data-i18n="lvl_2">Level 2</strong> <span data-i18n="p1b_l2">— Growing Tier</span></div></div>
+              <div class="level-value"><span data-i18n="p1b_l2_rate">0.20%</span><small data-i18n="of_spa">of SPA / Loan Amount</small></div>
+            </div>
+            <div class="level-row">
+              <div class="level-label"><div class="level-dot"></div><div class="level-text"><strong data-i18n="lvl_3">Level 3</strong> <span data-i18n="p1b_l3">— Advanced Tier</span></div></div>
+              <div class="level-value"><span data-i18n="p1b_l3_rate">0.25%</span><small data-i18n="of_spa">of SPA / Loan Amount</small></div>
+            </div>
+            <div class="level-row">
+              <div class="level-label"><div class="level-dot"></div><div class="level-text"><strong data-i18n="lvl_4">Level 4</strong> <span data-i18n="p1b_l4">— Elite Tier</span></div></div>
+              <div class="level-value"><span data-i18n="p1b_l4_rate">0.30%</span><small data-i18n="of_spa">of SPA / Loan Amount</small></div>
+            </div>
+            <div class="sample-box" style="margin-top:24px;">
+              <div class="sample-icon" style="font-size:1.8rem;">🏡</div>
+              <div class="sample-text">
+                <h4 data-i18n="p1b_sample_title">Sample: RM 250,000 Loan</h4>
+                <p style="font-size:0.85rem;" data-i18n="p1b_sample_body">
+                  <strong style="color:rgba(255,255,255,0.9)">Level 1:</strong> RM 250,000 × 0.15% = <strong style="color:var(--gold-light)">RM 375</strong> &nbsp;|&nbsp;
+                  <strong style="color:rgba(255,255,255,0.9)">Level 2:</strong> × 0.20% = <strong style="color:var(--gold-light)">RM 500</strong><br>
+                  <strong style="color:rgba(255,255,255,0.9)">Level 3:</strong> RM 250,000 × 0.25% = <strong style="color:var(--gold-light)">RM 625</strong> &nbsp;|&nbsp;
+                  <strong style="color:rgba(255,255,255,0.9)">Level 4:</strong> × 0.30% = <strong style="color:var(--gold-light)">RM 750</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Part C -->
+        <div class="part-card reveal">
+          <div class="part-card-header">
+            <div class="part-badge">C</div>
+            <div>
+              <h3 data-i18n="p1c_title">Passive Upline Override — 60 / 40 Split</h3>
+              <p data-i18n="p1c_desc">Earn passively from every deal your downline closes, regardless of involvement</p>
+            </div>
+          </div>
+          <div class="part-card-body">
+            <p style="font-size:0.9rem;color:var(--slate);margin-bottom:24px;line-height:1.75;" data-i18n="p1c_intro">A tiered reward pool is generated per case based on the <strong style="color:var(--navy)">loan amount closed</strong>. This pool is then distributed upward through the hierarchy using a <strong style="color:var(--navy)">60 / 40 split</strong>. Both uplines benefit without doing additional work.</p>
+
+            <h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);margin-bottom:16px;" data-i18n="p1c_s1_title">Scenario 1 — Two Upline Levels (Standard Split)</h4>
+            <div class="override-diagram">
+              <div class="agent-node agent-a">
+                <div class="agent-letter">A</div>
+                <div class="agent-name" data-i18n="agent_a">Agent A</div>
+                <div class="agent-role" data-i18n="case_owner">Case Owner</div>
+                <div class="agent-pct" data-i18n="closes_deal">Closes Deal</div>
+              </div>
+              <div class="arrow-line"></div>
+              <div class="agent-node agent-b">
+                <div class="agent-letter">B</div>
+                <div class="agent-name" data-i18n="agent_b">Agent B</div>
+                <div class="agent-role" data-i18n="direct_upline">Direct Upline</div>
+                <div class="agent-pct" data-i18n="pct_override_direct">60%</div>
+              </div>
+              <div class="arrow-line"></div>
+              <div class="agent-node agent-c">
+                <div class="agent-letter">C</div>
+                <div class="agent-name" data-i18n="agent_c">Agent C</div>
+                <div class="agent-role" data-i18n="secondary_upline">Secondary Upline</div>
+                <div class="agent-pct" data-i18n="pct_override_secondary">40%</div>
+              </div>
+            </div>
+            <div class="note-box" style="text-align:center;margin-bottom:28px;" data-i18n="p1c_s1_note">
+              Pool of <strong>RM 100</strong>: Agent B receives <strong>RM 60</strong> · Agent C receives <strong>RM 40</strong>
+            </div>
+
+            <h4 style="font-family:'Playfair Display',serif;font-size:1rem;color:var(--navy);margin-bottom:16px;" data-i18n="p1c_s2_title">Scenario 2 — No Secondary Upline (Solo Override)</h4>
+            <div class="override-diagram">
+              <div class="agent-node agent-a">
+                <div class="agent-letter">A</div>
+                <div class="agent-name" data-i18n="agent_a">Agent A</div>
+                <div class="agent-role" data-i18n="case_owner">Case Owner</div>
+                <div class="agent-pct" data-i18n="closes_deal">Closes Deal</div>
+              </div>
+              <div class="arrow-line"></div>
+              <div class="agent-node agent-b">
+                <div class="agent-letter">B</div>
+                <div class="agent-name" data-i18n="agent_b">Agent B</div>
+                <div class="agent-role" data-i18n="only_upline">Only Upline</div>
+                <div class="agent-pct" data-i18n="pct_override_solo">100%</div>
+              </div>
+            </div>
+            <div class="note-box" style="text-align:center;margin-bottom:32px;" data-i18n="p1c_s2_note">
+              If Agent B has <strong>no secondary upline</strong>, Agent B receives the <strong>full reward pool (100%)</strong> — all to B.
+            </div>
+
+            <h4 style="font-family:'Playfair Display',serif;font-size:1.05rem;color:var(--navy);margin:32px 0 10px;" data-i18n="p1c_table_title">Override Reward Pool by Loan Amount</h4>
+            <p style="font-size:0.85rem;color:var(--slate);margin-bottom:6px;line-height:1.7;" data-i18n="p1c_table_desc">Each case generates a reward pool based on the loan amount bracket. For loans above RM 1,000,000, every additional RM 100,000 adds RM 300 to the pool.</p>
+            <table class="payout-table">
+              <thead>
+                <tr>
+                  <th data-i18n="th_loan">Loan Amount (≤)</th>
+                  <th data-i18n="th_total">Total Reward Pool</th>
+                  <th data-i18n="th_incr">Incremental (+)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td data-i18n="tbl_r1_loan">RM 100,000</td><td class="total-cell" data-i18n="tbl_r1_pool">RM 100</td><td class="incr-cell" data-i18n="tbl_r1_incr">—</td></tr>
+                <tr><td data-i18n="tbl_r2_loan">RM 200,000</td><td class="total-cell" data-i18n="tbl_r2_pool">RM 200</td><td class="incr-cell" data-i18n="tbl_r2_incr">+RM 100</td></tr>
+                <tr><td data-i18n="tbl_r3_loan">RM 300,000</td><td class="total-cell" data-i18n="tbl_r3_pool">RM 300</td><td class="incr-cell" data-i18n="tbl_r3_incr">+RM 100</td></tr>
+                <tr><td data-i18n="tbl_r4_loan">RM 400,000</td><td class="total-cell" data-i18n="tbl_r4_pool">RM 400</td><td class="incr-cell" data-i18n="tbl_r4_incr">+RM 100</td></tr>
+                <tr class="highlight-row"><td data-i18n="tbl_r5_loan">RM 500,000</td><td class="total-cell" data-i18n="tbl_r5_pool">RM 700</td><td class="incr-cell" data-i18n="tbl_r5_incr">+RM 300</td></tr>
+                <tr><td data-i18n="tbl_r6_loan">RM 600,000</td><td class="total-cell" data-i18n="tbl_r6_pool">RM 900</td><td class="incr-cell" data-i18n="tbl_r6_incr">+RM 200</td></tr>
+                <tr><td data-i18n="tbl_r7_loan">RM 700,000</td><td class="total-cell" data-i18n="tbl_r7_pool">RM 1,100</td><td class="incr-cell" data-i18n="tbl_r7_incr">+RM 200</td></tr>
+                <tr><td data-i18n="tbl_r8_loan">RM 800,000</td><td class="total-cell" data-i18n="tbl_r8_pool">RM 1,300</td><td class="incr-cell" data-i18n="tbl_r8_incr">+RM 200</td></tr>
+                <tr><td data-i18n="tbl_r9_loan">RM 900,000</td><td class="total-cell" data-i18n="tbl_r9_pool">RM 1,500</td><td class="incr-cell" data-i18n="tbl_r9_incr">+RM 200</td></tr>
+                <tr class="highlight-row milestone-row"><td data-i18n="tbl_r10_loan">RM 1,000,000</td><td class="total-cell" data-i18n="tbl_r10_pool">RM 2,000</td><td class="incr-cell" data-i18n="tbl_r10_incr">+RM 500</td></tr>
+                <tr><td data-i18n="tbl_r11_loan">RM 1,100,000</td><td class="total-cell" data-i18n="tbl_r11_pool">RM 2,300</td><td class="incr-cell" data-i18n="tbl_r11_incr">+RM 300</td></tr>
+                <tr><td data-i18n="tbl_r12_loan">RM 1,500,000</td><td class="total-cell" data-i18n="tbl_r12_pool">RM 3,500</td><td class="incr-cell" data-i18n="tbl_r12_incr">+RM 300 / 100k</td></tr>
+                <tr class="highlight-row"><td data-i18n="tbl_r13_loan">RM 2,000,000</td><td class="total-cell" data-i18n="tbl_r13_pool">RM 5,000</td><td class="incr-cell" data-i18n="tbl_r13_incr">+RM 300 / 100k</td></tr>
+              </tbody>
+            </table>
+            <div class="note-box" style="margin-top:16px;" data-i18n="p1c_table_note">
+              <strong>Above RM 1,000,000:</strong> Every additional RM 100,000 adds RM 300 to the pool. Example: RM 1.5M loan = RM 2,000 + (5 × RM 300) = <strong>RM 3,500</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample Calculation -->
+       <!--  <div class="sample-box reveal">
+          <div class="sample-icon">🏠</div>
+          <div class="sample-text">
+            <h4 data-i18n="sample_title">Sample Calculation — Part B (Level 4)</h4>
+            <p data-i18n="sample_body">A <strong style="color:var(--gold-light)">Level 4 Elite Agent</strong> closes an RM 800,000 loan using NFG's panel lawyer.<br>
+            Commission = RM 800,000 × 0.30% = <strong style="color:var(--gold-light)">RM 2,400</strong></p>
+          </div>
+          <div class="sample-result">
+            <div class="amount">RM 2,400</div>
+            <div class="label" data-i18n="sample_label">Single Deal Return</div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+
+    <!-- ── PROGRAM 2 ── -->
+    <div class="tab-content" id="p2">
+      <div class="p2-requirement reveal">
+        <div class="req-icon">📋</div>
+        <div class="req-text">
+          <h4 data-i18n="p2_req_title">Monthly Performance Requirement</h4>
+          <p data-i18n="p2_req_desc">Maintain a minimum of 5 approved & signed cases per month (after bank offer) to qualify for the legal fee sharing reward.</p>
+        </div>
+        <div class="req-number mt-2"><span data-i18n="p2_req_number">5</span><small style="margin-top: 10px;" data-i18n="p2_req_unit">minimum case per month</small></div>
+      </div>
+
+      <div class="p2-grid" style="margin-top:28px;">
+        <div class="p2-card scenario-direct reveal">
+          <div class="p2-card-head">
+            <div class="scenario-icon">✅</div>
+            <div>
+              <h3 data-i18n="p2_direct_title">Direct Owner</h3>
+              <p data-i18n="p2_direct_desc">You are directly dealing with NFG — no referrer involved</p>
+            </div>
+          </div>
+          <div class="p2-card-body">
+            <div class="split-visual">
+              <div class="split-part split-half-a" data-i18n="p2_direct_bar_a">You 10%</div>
+              <div class="split-part split-half-b" data-i18n="p2_direct_bar_b">CASE OWNER 10%</div>
+            </div>
+            <ul class="distribute-list">
+              <li>
+                <div class="who"><div class="who-dot" style="background:var(--navy)"></div><span data-i18n="p2_nfg_agent">You</span></div>
+                <div class="pct" data-i18n="pct_ten">10%</div>
+              </li>
+              <li>
+                <div class="who"><div class="who-dot" style="background:var(--gold-dark)"></div><span data-i18n="p2_case_owner">Case Owner</span></div>
+                <div class="pct" data-i18n="pct_ten">10%</div>
+              </li>
+            </ul>
+            <div class="note-box" style="margin-top:16px;" data-i18n="p2_direct_note">
+              You receive <strong>10%</strong> as the case owner from the direct deal with NFG, while NFG receives the other <strong>10%</strong>.
+            </div>
+          </div>
+        </div>
+
+        <div class="p2-card scenario-referred reveal">
+          <div class="p2-card-head">
+            <div class="scenario-icon">🤝</div>
+            <div>
+              <h3 data-i18n="p2_ref_title">Referred Enrollment</h3>
+              <p data-i18n="p2_ref_desc">You joined the program through a referrer</p>
+            </div>
+          </div>
+          <div class="p2-card-body">
+            <div class="split-visual">
+              <div class="split-part split-half-a" data-i18n="p2_ref_bar_a">REFERRER 10%</div>
+              <div class="split-part split-half-b" data-i18n="p2_ref_bar_b">CASE OWNER 10%</div>
+            </div>
+            <ul class="distribute-list">
+              <li>
+                <div class="who"><div class="who-dot" style="background:var(--navy)"></div><span data-i18n="p2_referrer">Referrer</span></div>
+                <div class="pct" data-i18n="pct_ten">10%</div>
+              </li>
+              <li>
+                <div class="who"><div class="who-dot" style="background:var(--gold-dark)"></div><span data-i18n="p2_case_owner">Case Owner</span></div>
+                <div class="pct" data-i18n="pct_ten">10%</div>
+              </li>
+            </ul>
+            <div class="note-box" style="margin-top:16px;" data-i18n="p2_ref_note">
+              The 20% FA legal fee share is split equally — <strong>10%</strong> to your referrer and <strong>10%</strong> to the case owner.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:16px;" class="reveal">
+        <div class="note-box" style="margin-bottom:10px;border-left-color:#c0392b;" data-i18n="p2_rule1">
+          <strong>⚖️ Legal Fee Threshold:</strong> The lawyer's referral fee from the loan agreement must be at least <strong>50%</strong> of the Facilities Agreement (FA) portion. NFG retains <strong>30%</strong>, leaving the remaining <strong>20%</strong> for the partner reward pool.
+        </div>
+        <div class="note-box" style="margin-bottom:10px;border-left-color:#2980b9;" data-i18n="p2_rule2">
+          <strong>📊 Minimum Productivity:</strong> A minimum of <strong>5 approved and signed cases per month</strong> (after bank offer) is required to remain eligible for the 20% legal fee sharing benefit.
+        </div>
+        <div class="note-box" style="margin-bottom:0;border-left-color:#8e44ad;" data-i18n="p2_rule3">
+          <strong>🚫 Legal Discounts:</strong> No additional discounts on legal fees are applicable under these two specific offer tracks. All fee structures must remain intact as stipulated.
+        </div>
+      </div>
+    </div>
+  
+    
+  </div>
+</section>
+
+<!-- WHATSAPP CONTACT SECTION (Style 2) -->
+<section class="wa-section" id="how">
+  <div class="wa-v2-inner">
+    <div class="wa-v2-text reveal">
+      <div class="section-tag" data-i18n="wa_tag">Let's Connect</div>
+      <h3 data-i18n="wa_title">Ready to Take the Next Step?</h3>
+      <p data-i18n="wa_desc">Drop us a message on WhatsApp and our partner success team will arrange a personalised appointment to answer all your questions about joining NFG's partner program.</p>
+      <a href="https://wa.me/60173994859?text=I%27m%20interested%20in%20the%20partner%20program" target="_blank" rel="noopener" class="btn-wa">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        <span data-i18n="wa_btn">Start Conversation</span>
+      </a>
+    </div>
+    <div class="wa-v2-graphic reveal">
+      <div class="wa-v2-bubble" data-i18n="wa_bubble1">Hi, I'd like to learn more about the NFG Partner Program 👋</div>
+      <div class="wa-v2-bubble reply" data-i18n="wa_bubble2">Of course! Let me book a slot for you right away ✅</div>
+      <div class="wa-v2-time" data-i18n="wa_time">Just now · +60 17-399 4859</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand"><span data-i18n="brand_name">NFG Advisory Sdn Bhd</span><span class="brand-sub" data-i18n="footer_brand_sub">Partner Program · Est. Malaysia</span></div>
+  <div class="footer-legal" data-i18n="footer_legal">© 2025 NFG Advisory Sdn Bhd. All rights reserved. Partner program terms subject to revision. All earnings are subject to case approval and program compliance.</div>
+</footer>
+
+<script>
+  // ─── TAB SWITCHER ───
+  function switchTab(e, id) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    e.target.classList.add('active');
+    document.getElementById(id).classList.add('active');
+  }
+
+  // ─── SCROLL REVEAL ───
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // ─── DIGIT DATA (language-independent numeric values — edit here to update all displays) ───
+  const DATA = {
+    stat1_number: "0.30<span>%</span>",
+    stat2_number: "RM <span>2,400</span>",
+    stat3_number: "RM <span>2,500</span>",
+    stat4_number: "20<span>%</span>",
+    p1a_l2_val:  "RM 500",
+    p1a_l3_val:  "RM 1,000",
+    p1a_l4_val:  "RM 1,000",
+    p1b_l1_rate: "0.15%",
+    p1b_l2_rate: "0.20%",
+    p1b_l3_rate: "0.25%",
+    p1b_l4_rate: "0.30%",
+    pct_override_direct:    "60%",
+    pct_override_secondary: "40%",
+    pct_override_solo:      "100%",
+    pct_ten:                "10%",
+    p2_req_number: "5",
+    tbl_r1_loan:  "RM 100,000",   tbl_r1_pool:  "RM 100",   tbl_r1_incr:  "\u2014",
+    tbl_r2_loan:  "RM 200,000",   tbl_r2_pool:  "RM 200",   tbl_r2_incr:  "+RM 100",
+    tbl_r3_loan:  "RM 300,000",   tbl_r3_pool:  "RM 300",   tbl_r3_incr:  "+RM 100",
+    tbl_r4_loan:  "RM 400,000",   tbl_r4_pool:  "RM 400",   tbl_r4_incr:  "+RM 100",
+    tbl_r5_loan:  "RM 500,000",   tbl_r5_pool:  "RM 700",   tbl_r5_incr:  "+RM 300",
+    tbl_r6_loan:  "RM 600,000",   tbl_r6_pool:  "RM 900",   tbl_r6_incr:  "+RM 200",
+    tbl_r7_loan:  "RM 700,000",   tbl_r7_pool:  "RM 1,100", tbl_r7_incr:  "+RM 200",
+    tbl_r8_loan:  "RM 800,000",   tbl_r8_pool:  "RM 1,300", tbl_r8_incr:  "+RM 200",
+    tbl_r9_loan:  "RM 900,000",   tbl_r9_pool:  "RM 1,500", tbl_r9_incr:  "+RM 200",
+    tbl_r10_loan: "RM 1,000,000", tbl_r10_pool: "RM 2,000", tbl_r10_incr: "+RM 500",
+    tbl_r11_loan: "RM 1,100,000", tbl_r11_pool: "RM 2,300", tbl_r11_incr: "+RM 300",
+    tbl_r12_loan: "RM 1,500,000", tbl_r12_pool: "RM 3,500", tbl_r12_incr: "+RM 300 / 100k",
+    tbl_r13_loan: "RM 2,000,000", tbl_r13_pool: "RM 5,000", tbl_r13_incr: "+RM 300 / 100k",
+  };
+
+  // ─── TRANSLATIONS (inline — works with file:// and http://) ───
+  // Source of truth: i18n/en.json, i18n/bm.json, i18n/zh.json
+  const TRANSLATIONS = {
+  en: {
+    "page_title": "NFG Advisory Sdn Bhd – Partner Program",
+    "lang_label": "Language",
+    "brand_name": "NFG Advisory Sdn Bhd",
+    "brand_sub": "Partner Program · Malaysia",
+    "topbar": "10+ Years of Proven Mortgage Experience in Malaysia · Helping You Secure the Best Loans · <span>NFG Advisory Sdn Bhd</span>",
+    "nav_programs": "Programs",
+    "nav_how": "Contact Us",
+    "nav_join": "Join Now",
+    "hero_badge": "Exclusive Partner Program 2026",
+    "hero_h1": "Build <em>Wealth</em> Beyond<br>Every Property Deal",
+    "hero_p": "Leading agents across Malaysia choose NFG to diversify their income through competitive commissions, performance bonuses, and sustainable passive overrides.",
+    "hero_btn1": "Explore Programs",
+    "hero_btn2": "WhatsApp Us",
+    "stat1_label": "Peak Commission Rate",
+    "stat2_label": "Sample Closing (RM 800K Loan)",
+    "stat3_label": "Max Recruitment Bonus",
+    "stat4_label": "Legal Fee Share (Team Track)",
+    "programs_tag": "Program Structure",
+    "programs_title": "Two Paths to Elite Earnings",
+    "programs_sub": "Choose the program that best aligns with your business model.",
+    "tab1": "Program 1 · Elite Individual Track",
+    "tab2": "Program 2 · Team Partnership Track",
+    "p1a_title": "Recruitment Growth Bonuses",
+    "p1a_desc": "One-time cash rewards for successfully expanding your agent network.",
+    "lvl_2": "Level 2", "p1a_l2": "— Refer 5 Active Agents",
+    "lvl_3": "Level 3", "p1a_l3": "— Refer 10 Active Agents",
+    "lvl_4": "Level 4", "p1a_l4": "— Refer 15 Active Agents",
+    "one_time": "One-Time",
+    "p1a_note": "<strong>Active Agent Definition:</strong> A referred agent is considered “active” once at least <strong>one (1) case has been approved and signed</strong>.",
+    "p1b_title": "Personal Sales Commission",
+    "p1b_desc": "Earn on every closed case referred to us, based on our tiered incentive structure.",
+    "p1b_eligibility": "<strong>Eligibility:</strong> This referral fee applies exclusively when NFG’s panel lawyer is appointed for the <strong>SPA</strong>, <strong>Loan Agreement</strong>, or <strong>both</strong>. Cases handled by external lawyers are not eligible.",
+    "lvl_1": "Level 1", "p1b_l1": "— Entry Tier",
+    "p1b_l2": "— Growing Tier",
+    "p1b_l3": "— Advanced Tier",
+    "p1b_l4": "— Elite Tier",
+    "of_spa": "of SPA / Loan Amount",
+    "p1b_sample_title": "Example: RM 250,000 Loan",
+    "p1b_sample_body": "<strong style=\"color:rgba(255,255,255,0.9)\">Level 1:</strong> RM 375 &nbsp;|&nbsp; <strong style=\"color:rgba(255,255,255,0.9)\">Level 2:</strong> RM 500<br><strong style=\"color:rgba(255,255,255,0.9)\">Level 3:</strong> RM 625 &nbsp;|&nbsp; <strong style=\"color:rgba(255,255,255,0.9)\">Level 4:</strong> RM 750",
+    "p1c_title": "Passive Upline Override — 60 / 40 Split",
+    "p1c_desc": "Earn passively from every deal closed by your downline, with zero extra effort.",
+    "p1c_intro": "A tiered reward pool is generated for each case based on the <strong style=\"color:var(--navy)\">loan amount</strong>. This pool is distributed upward through the hierarchy via a <strong style=\"color:var(--navy)\">60/40 split</strong> between two upline levels.",
+    "p1c_s1_title": "Scenario 1 — Two Upline Levels (Standard Split)",
+    "agent_a": "Agent A", "agent_b": "Agent B", "agent_c": "Agent C",
+    "case_owner": "Case Owner", "direct_upline": "Direct Upline",
+    "secondary_upline": "Secondary Upline", "only_upline": "Solo Upline",
+    "closes_deal": "Closes Deal",
+    "p1c_s1_note": "From a pool of <strong>RM 100</strong>: Agent B (Direct) receives <strong>RM 60</strong>, Agent C (Secondary) receives <strong>RM 40</strong>.",
+    "p1c_s2_title": "Scenario 2 — No Secondary Upline (Solo Override)",
+    "p1c_s2_note": "If Agent B has <strong>no secondary upline</strong>, Agent B receives the <strong>full 100%</strong> of the reward pool.",
+    "p1c_table_title": "Override Reward Pool by Loan Amount",
+    "p1c_table_desc": "Reward pools are determined by the loan amount bracket. For loans exceeding RM 1,000,000, every additional RM 100,000 adds RM 300 to the pool.",
+    "th_loan": "Loan Amount (≤)", "th_total": "Total Reward Pool", "th_incr": "Incremental (+)",
+    "p1c_table_note": "<strong>Example (RM 1.5M Loan):</strong> RM 2,000 + (5 × RM 300) = <strong>RM 3,500 Total Pool</strong>.",
+    "p2_req_title": "Monthly Performance Requirement",
+    "p2_req_desc": "Maintain a minimum of 5 approved & signed cases per month to remain eligible for the legal fee sharing program.",
+    "p2_req_unit": "min. cases / month",
+    "p2_direct_title": "Direct Channel",
+    "p2_direct_desc": "Dealing directly with an NFG Consultant without a referrer.",
+    "p2_direct_bar_a": "NFG 10%", "p2_direct_bar_b": "Case Owner 10%",
+    "p2_nfg_agent": "NFG Consultant", "p2_case_owner": "Case Owner",
+    "p2_direct_note": "The 20% legal fee share is split equally: <strong>10%</strong> to NFG and <strong>10%</strong> to the Case Owner.",
+    "p2_ref_title": "Referral Channel",
+    "p2_ref_desc": "Cases enrolled via a program referrer.",
+    "p2_ref_bar_a": "Referrer 10%", "p2_ref_bar_b": "Case Owner 10%",
+    "p2_referrer": "Referrer",
+    "p2_ref_note": "The 20% legal fee share is split equally: <strong>10%</strong> to the Referrer and <strong>10%</strong> to the Case Owner.",
+    "p2_rule1": "<strong>⚖️ Legal Fee Threshold:</strong> The referral fee from the loan agreement must be at least <strong>50%</strong> of the Facility Agreement (FA) portion. NFG retains 30%, leaving 20% for the partner pool.",
+    "p2_rule2": "<strong>📊 Productivity:</strong> A minimum of <strong>5 signed cases per month</strong> is required to maintain eligibility for the 20% legal fee share.",
+    "p2_rule3": "<strong>🚫 No Extra Discounts:</strong> No additional legal fee discounts are applicable under these tracks to ensure the sustainability of the reward structure.",
+    "wa_tag": "Get In Touch",
+    "wa_title": "Ready to Scale Your Income?",
+    "wa_desc": "Message us on WhatsApp. Our Partner Success team will arrange a personal consultation to walk you through the NFG Partner Program.",
+    "wa_btn": "Start Conversation",
+    "wa_bubble1": "Hi! I'd like to learn more about the NFG Partner Program 👋",
+    "wa_bubble2": "Hello! I'd be happy to help. Let's book a slot for you ✅",
+    "wa_time": "Just now · +60 17-399 4859",
+    "footer_brand_sub": "Partner Program · Malaysia",
+    "footer_legal": "© 2026 NFG Advisory Sdn Bhd. All rights reserved. Terms and conditions apply. Earnings are subject to case approval and compliance.",
+    "footer_enquiries": "Enquiries:"
+  },
+  bm: {
+    "page_title": "NFG Advisory Sdn Bhd – Program Rakan Kongsi",
+    "lang_label": "Bahasa",
+    "brand_name": "NFG Advisory Sdn Bhd",
+    "brand_sub": "Program Rakan Kongsi · Malaysia",
+    "topbar": "Pengalaman Gadai Janji Terbukti 10+ Tahun di Malaysia · Membantu Anda Mendapatkan Pinjaman Terbaik · <span>NFG Advisory Sdn Bhd</span>",
+    "nav_programs": "Program",
+    "nav_how": "Hubungi Kami",
+    "nav_join": "Daftar Sekarang",
+    "hero_badge": "Program Rakan Kongsi Eksklusif 2026",
+    "hero_h1": "Bina <em>Kekayaan</em> Melangkaui<br>Setiap Urus Niaga Hartanah",
+    "hero_p": "Ejen hartanah terkemuka di seluruh Malaysia memilih NFG untuk mempelbagaikan pendapatan melalui komisen tinggi, bonus prestasi, dan override pasif yang mampan.",
+    "hero_btn1": "Terokai Program",
+    "hero_btn2": "Hubungi Kami (WhatsApp)",
+    "stat1_label": "Kadar Komisen Tertinggi",
+    "stat2_label": "Contoh Penutupan (Pinjaman RM 800K)",
+    "stat3_label": "Bonus Pengambilan Maksimum",
+    "stat4_label": "Bahagian Yuran Guaman (Trek Pasukan)",
+    "programs_tag": "Struktur Program",
+    "programs_title": "Dua Laluan Pendapatan Elit",
+    "programs_sub": "Pilih program yang paling sesuai dengan model perniagaan anda.",
+    "tab1": "Program 1 · Trek Individu Elit",
+    "tab2": "Program 2 · Trek Rakan Kongsi Pasukan",
+    "p1a_title": "Bonus Pertumbuhan Pengambilan",
+    "p1a_desc": "Ganjaran tunai sekali sahaja untuk mengembangkan rangkaian ejen anda.",
+    "lvl_2": "Tahap 2", "p1a_l2": "— Rujuk 5 Ejen Aktif",
+    "lvl_3": "Tahap 3", "p1a_l3": "— Rujuk 10 Ejen Aktif",
+    "lvl_4": "Tahap 4", "p1a_l4": "— Rujuk 15 Ejen Aktif",
+    "one_time": "Sekali Sahaja",
+    "p1a_note": "<strong>Definisi Ejen Aktif:</strong> Ejen rujukan dianggap “aktif” selepas sekurang-kurangnya <strong>satu (1) kes diluluskan dan ditandatangani</strong>.",
+    "p1b_title": "Komisen Jualan Peribadi",
+    "p1b_desc": "Dapatkan komisen untuk setiap kes yang dirujuk berdasarkan struktur insentif bertingkat kami.",
+    "p1b_eligibility": "<strong>Kelayakan:</strong> Yuran rujukan ini hanya terpakai jika peguam panel NFG dilantik untuk <strong>SPA</strong>, <strong>Perjanjian Pinjaman</strong>, atau <strong>kedua-duanya</strong>. Kes melalui peguam luar tidak layak.",
+    "lvl_1": "Tahap 1", "p1b_l1": "— Peringkat Permulaan",
+    "p1b_l2": "— Peringkat Berkembang",
+    "p1b_l3": "— Peringkat Lanjutan",
+    "p1b_l4": "— Peringkat Elit",
+    "of_spa": "daripada SPA / Jumlah Pinjaman",
+    "p1b_sample_title": "Contoh: Pinjaman RM 250,000",
+    "p1b_sample_body": "<strong style=\"color:rgba(255,255,255,0.9)\">Tahap 1:</strong> RM 375 &nbsp;|&nbsp; <strong style=\"color:rgba(255,255,255,0.9)\">Tahap 2:</strong> RM 500<br><strong style=\"color:rgba(255,255,255,0.9)\">Tahap 3:</strong> RM 625 &nbsp;|&nbsp; <strong style=\"color:rgba(255,255,255,0.9)\">Tahap 4:</strong> RM 750",
+    "p1c_title": "Override Upline Pasif — Pecahan 60 / 40",
+    "p1c_desc": "Pendapatan pasif daripada setiap kes yang ditutup oleh downline anda.",
+    "p1c_intro": "Kumpulan ganjaran (pool) dijana mengikut <strong style=\"color:var(--navy)\">jumlah pinjaman</strong>. Pool ini diagihkan melalui <strong style=\"color:var(--navy)\">pecahan 60/40</strong> kepada dua peringkat upline.",
+    "p1c_s1_title": "Senario 1 — Dua Peringkat Upline (Pecahan Standard)",
+    "agent_a": "Ejen A", "agent_b": "Ejen B", "agent_c": "Ejen C",
+    "case_owner": "Pemilik Kes", "direct_upline": "Upline Langsung",
+    "secondary_upline": "Upline Sekunder", "only_upline": "Upline Solo",
+    "closes_deal": "Tutup Kes",
+    "p1c_s1_note": "Daripada pool <strong>RM 100</strong>: Ejen B (Langsung) mendapat <strong>RM 60</strong>, Ejen C (Sekunder) mendapat <strong>RM 40</strong>.",
+    "p1c_s2_title": "Senario 2 — Tiada Upline Sekunder (Override Solo)",
+    "p1c_s2_note": "Jika Ejen B <strong>tiada upline sekunder</strong>, Ejen B menerima <strong>100% penuh</strong> kumpulan ganjaran tersebut.",
+    "p1c_table_title": "Kumpulan Ganjaran Mengikut Jumlah Pinjaman",
+    "p1c_table_desc": "Ganjaran ditentukan mengikut julat pinjaman. Bagi pinjaman melebihi RM 1,000,000, setiap tambahan RM 100,000 menambah RM 300 ke dalam pool.",
+    "th_loan": "Jumlah Pinjaman (≤)", "th_total": "Jumlah Pool Ganjaran", "th_incr": "Tambahan (+)",
+    "p1c_table_note": "<strong>Contoh (Pinjaman RM 1.5J):</strong> RM 2,000 + (5 × RM 300) = <strong>RM 3,500 Jumlah Pool</strong>.",
+    "p2_req_title": "Keperluan Prestasi Bulanan",
+    "p2_req_desc": "Kekalkan minimum 5 kes diluluskan & ditandatangani setiap bulan untuk layak mendapat perkongsian yuran guaman.",
+    "p2_req_unit": "min. kes / bulan",
+    "p2_direct_title": "Saluran Langsung",
+    "p2_direct_desc": "Berurusan terus dengan Perunding NFG tanpa perujuk.",
+    "p2_direct_bar_a": "NFG 10%", "p2_direct_bar_b": "Pemilik Kes 10%",
+    "p2_nfg_agent": "Perunding NFG", "p2_case_owner": "Pemilik Kes",
+    "p2_direct_note": "Bahagian yuran guaman 20% dibahagi sama rata: <strong>10%</strong> kepada NFG dan <strong>10%</strong> kepada Pemilik Kes.",
+    "p2_ref_title": "Saluran Rujukan",
+    "p2_ref_desc": "Kes yang didaftarkan melalui perujuk program.",
+    "p2_ref_bar_a": "Perujuk 10%", "p2_ref_bar_b": "Pemilik Kes 10%",
+    "p2_referrer": "Perujuk",
+    "p2_ref_note": "Bahagian yuran guaman 20% dibahagi sama rata: <strong>10%</strong> kepada Perujuk dan <strong>10%</strong> kepada Pemilik Kes.",
+    "p2_rule1": "<strong>⚖️ Ambang Yuran Guaman:</strong> Yuran rujukan mestilah sekurang-kurangnya <strong>50%</strong> daripada bahagian Perjanjian Kemudahan (FA). NFG mengekalkan 30%, baki 20% untuk pool rakan kongsi.",
+    "p2_rule2": "<strong>📊 Produktiviti:</strong> Minimum <strong>5 kes ditandatangani sebulan</strong> diperlukan untuk mengekalkan kelayakan bahagian yuran guaman 20%.",
+    "p2_rule3": "<strong>🚫 Tiada Diskaun Tambahan:</strong> Tiada diskaun yuran guaman tambahan dibenarkan untuk memastikan struktur ganjaran kekal mampan.",
+    "wa_tag": "Hubungi Kami",
+    "wa_title": "Bersedia Tingkatkan Pendapatan?",
+    "wa_desc": "Hantar mesej WhatsApp kepada kami. Pasukan Rakan Kongsi kami akan mengatur sesi konsultasi peribadi mengenai Program Rakan Kongsi NFG.",
+    "wa_btn": "Mulakan Perbualan",
+    "wa_bubble1": "Hai! Saya ingin tahu lebih lanjut tentang Program Rakan Kongsi NFG 👋",
+    "wa_bubble2": "Sama-sama! Saya sedia membantu. Mari kita tempah slot untuk anda ✅",
+    "wa_time": "Baru sahaja · +60 17-399 4859",
+    "footer_brand_sub": "Program Rakan Kongsi · Malaysia",
+    "footer_legal": "© 2026 NFG Advisory Sdn Bhd. Hak Cipta Terpelihara. Tertakluk kepada terma & syarat. Pendapatan bergantung kepada kelulusan kes.",
+    "footer_enquiries": "Pertanyaan:"
+  },
+  zh: {
+    "page_title": "NFG Advisory Sdn Bhd – 合作伙伴计划",
+    "lang_label": "语言",
+    "brand_name": "NFG Advisory Sdn Bhd",
+    "brand_sub": "合作伙伴计划 · 马来西亚",
+    "topbar": "拥有超过10年马来西亚房贷经验 · 助您争取最佳贷款方案 · <span>NFG Advisory Sdn Bhd</span>",
+    "nav_programs": "计划详情",
+    "nav_how": "联系我们",
+    "nav_join": "立即加入",
+    "hero_badge": "2026年独家合作伙伴计划",
+    "hero_h1": "在每一笔房产交易之外<br>创造<em>财富</em>",
+    "hero_p": "马来西亚各地顶尖房产经纪选择 NFG，通过具竞争力的佣金、表现奖金及可持续的被动分红实现收入多元化。",
+    "hero_btn1": "了解计划",
+    "hero_btn2": "WhatsApp 联系我们",
+    "stat1_label": "最高佣金率",
+    "stat2_label": "示例收益（80万贷款）",
+    "stat3_label": "最高招募奖金",
+    "stat4_label": "法律费分成（团队模式）",
+    "programs_tag": "计划结构",
+    "programs_title": "通往精英收入的双重路径",
+    "programs_sub": "选择最符合您业务模式的计划。",
+    "tab1": "计划 1 · 精英个人渠道",
+    "tab2": "计划 2 · 团队合作伙伴渠道",
+    "p1a_title": "招募增长奖金",
+    "p1a_desc": "成功扩展您的经纪网络即可获得一次性现金奖励。",
+    "lvl_2": "级别 2", "p1a_l2": "— 推荐 5 名活跃经纪",
+    "lvl_3": "级别 3", "p1a_l3": "— 推荐 10 名活跃经纪",
+    "lvl_4": "级别 4", "p1a_l4": "— 推荐 15 名活跃经纪",
+    "one_time": "一次性",
+    "p1a_note": "<strong>活跃经纪定义：</strong> 被推荐人需完成至少 <strong>1 宗获批并签署的案件</strong> 方被视为“活跃”。",
+    "p1b_title": "个人销售佣金",
+    "p1b_desc": "根据我们的阶梯式奖励结构，为您推荐的每宗成交案件赚取佣金。",
+    "p1b_eligibility": "<strong>资格要求：</strong> 此推荐费仅适用于委任 NFG 指定律师处理 <strong>SPA</strong>、<strong>贷款协议</strong> 或<strong>两者</strong>的情况。外部律师处理的案件不符合资格。",
+    "lvl_1": "级别 1", "p1b_l1": "— 入门级",
+    "p1b_l2": "— 成长级",
+    "p1b_l3": "— 进阶级",
+    "p1b_l4": "— 精英级",
+    "of_spa": "按 SPA / 贷款金额计算",
+    "p1b_sample_title": "示例：25万令吉贷款",
+    "p1b_sample_body": "<strong style=\"color:rgba(255,255,255,0.9)\">级别 1:</strong> RM 375 &nbsp;|&nbsp; <strong style=\"color:rgba(255,255,255,0.9)\">级别 2:</strong> RM 500<br><strong style=\"color:rgba(255,255,255,0.9)\">级别 3:</strong> RM 625 &nbsp;|&nbsp; <strong style=\"color:rgba(255,255,255,0.9)\">级别 4:</strong> RM 750",
+    "p1c_title": "被动上线分红 — 60 / 40 分账",
+    "p1c_desc": "无需额外工作，从您下线成交的每一笔交易中赚取被动收入。",
+    "p1c_intro": "每个案件根据<strong style=\"color:var(--navy)\">贷款金额</strong>生成阶梯奖励池。该奖励池通过 <strong style=\"color:var(--navy)\">60/40 比例</strong>向上分配给两层上线。",
+    "p1c_s1_title": "情景 1 — 双层上线（标准分账）",
+    "agent_a": "经纪 A", "agent_b": "经纪 B", "agent_c": "经纪 C",
+    "case_owner": "案件负责人", "direct_upline": "直属上线",
+    "secondary_upline": "二级上线", "only_upline": "唯一上线",
+    "closes_deal": "成交案件",
+    "p1c_s1_note": "若奖励池为 <strong>RM 100</strong>：经纪 B（直属）获得 <strong>RM 60</strong>，经纪 C（二级）获得 <strong>RM 40</strong>。",
+    "p1c_s2_title": "情景 2 — 无二级上线（独享分红）",
+    "p1c_s2_note": "若经纪 B <strong>没有二级上线</strong>，经纪 B 将获得 <strong>100% 全部</strong>奖励池。",
+    "p1c_table_title": "按贷款金额划分的奖励池",
+    "p1c_table_desc": "奖励池由贷款金额区间决定。贷款超过 100 万令吉时，每增加 10 万令吉，奖池增加 RM 300。",
+    "th_loan": "贷款金额 (≤)", "th_total": "总奖励池", "th_incr": "递增 (+)",
+    "p1c_table_note": "<strong>示例（150万贷款）：</strong> RM 2,000 + (5 × RM 300) = <strong>RM 3,500 总奖池</strong>。",
+    "p2_req_title": "每月业绩要求",
+    "p2_req_desc": "每月维持至少 5 宗获批并签署的案件，方可享有法律费分享奖励。",
+    "p2_req_unit": "每月最低案件数",
+    "p2_direct_title": "直接渠道",
+    "p2_direct_desc": "直接对接 NFG 顾问，无推荐人参与。",
+    "p2_direct_bar_a": "NFG 10%", "p2_direct_bar_b": "案件负责人 10%",
+    "p2_nfg_agent": "NFG 顾问", "p2_case_owner": "案件负责人",
+    "p2_direct_note": "20% 的法律费分成平均分配：<strong>10%</strong> 归 NFG，<strong>10%</strong> 归案件负责人。",
+    "p2_ref_title": "推荐渠道",
+    "p2_ref_desc": "通过计划推荐人加入并提交的案件。",
+    "p2_ref_bar_a": "推荐人 10%", "p2_ref_bar_b": "案件负责人 10%",
+    "p2_referrer": "推荐人",
+    "p2_ref_note": "20% 的法律费分成平均分配：<strong>10%</strong> 归推荐人，<strong>10%</strong> 归案件负责人。",
+    "p2_rule1": "<strong>⚖️ 法律费门槛：</strong> 贷款协议的推荐费必须至少达到融资协议 (FA) 部分的 <strong>50%</strong>。NFG 保留 30%，剩余 20% 用于合作伙伴奖池。",
+    "p2_rule2": "<strong>📊 生产力：</strong> 每月须有 <strong>5 宗签署案件</strong> 以维持 20% 法律费分享资格。",
+    "p2_rule3": "<strong>🚫 无额外折扣：</strong> 为确保奖励结构的可持续性，本计划下不接受额外的法律费折扣。",
+    "wa_tag": "联系我们",
+    "wa_title": "准备好倍增您的收入了吗？",
+    "wa_desc": "通过 WhatsApp 联系我们。我们的合作伙伴成功团队将为您安排一对一咨询，详细讲解 NFG 合作伙伴计划。",
+    "wa_btn": "开始对话",
+    "wa_bubble1": "你好！我想了解更多关于 NFG 合作伙伴计划的信息 👋",
+    "wa_bubble2": "你好！没问题，让我立即为您安排预约 ✅",
+    "wa_time": "刚刚 · +60 17-399 4859",
+    "footer_brand_sub": "合作伙伴计划 · 马来西亚",
+    "footer_legal": "© 2026 NFG Advisory Sdn Bhd. 保留所有权利。需符合条款与条例。所有收益均需经案件核准。",
+    "footer_enquiries": "咨询："
+  }
+};
+
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    const t = TRANSLATIONS[lang];
+    if (!t) return;
+    currentLang = lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('lang-' + lang).classList.add('active');
+    document.getElementById('html-root').lang = lang === 'zh' ? 'zh' : lang === 'bm' ? 'ms' : 'en';
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (t[key] !== undefined) {
+        if (el.tagName === 'TITLE') {
+          document.title = t[key];
+        } else {
+          el.innerHTML = t[key];
+        }
+      }
+    });
+  }
+
+  // Apply language-independent digit values from DATA (digits never need translation)
+  function applyData() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (key in DATA) el.innerHTML = DATA[key];
+    });
+  }
+
+  setLang('en');
+  applyData();
+</script>
+</body>
+</html>
